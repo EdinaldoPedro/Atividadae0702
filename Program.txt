@@ -1,0 +1,66 @@
+using System;
+
+namespace Atividade0702
+{
+    class Progam
+    {
+        static void Main(string[] args)
+        {
+            float valor_pag;
+            Console.WriteLine("Informar Nome: ");
+            string var_nome = Console.ReadLine();
+            Console.WriteLine("Informa Endereço: ");
+            string var_endereço = Console.ReadLine();
+            Console.WriteLine("Pessoa Física (f) ou Jurídica (j) ?");
+            string var_tipo = Console.ReadLine();
+
+            if(var_tipo == "f")
+            {
+                Pessoa_fisica pf =  new Pessoa_fisica();
+                pf.nome = var_nome;
+                pf.endereco = var_endereço;
+                Console.WriteLine("Infomre CPF: ");
+                pf.cpf = Console.ReadLine();
+                Console.WriteLine("Infomer RG: ");
+                pf.rg = Console.ReadLine();
+                Console.WriteLine("Informe Valor da Compra: ");
+                valor_pag = float.Parse(Console.ReadLine());
+                pf.Pagar_Imposto(valor_pag);
+                Console.WriteLine("--------- Pessoa Física ---------");
+                Console.WriteLine("Nome ..........: " + pf.nome);
+                Console.WriteLine("Endereço ......: " + pf.endereco);
+                Console.WriteLine("CPF ...........: " + pf.cpf);
+                Console.WriteLine("RG ............: " + pf.rg);
+                Console.WriteLine("Valor da Compra: " + valor_pag.ToString("c"));
+                Console.WriteLine("Imposto........: " + pf.valor_imposto.ToString("c"));
+                Console.WriteLine("Valor Total ...: " + pf.total.ToString("c"));
+            }
+
+            if(var_tipo == "j")
+            {
+                Pessoa_juridica pj = new Pessoa_juridica();
+                pj.nome = var_nome;
+                pj.endereco = var_endereço;
+                Console.WriteLine("Informe o CNPJ: ");
+                pj.cnpj = Console.ReadLine();
+                Console.WriteLine("Informe IE: ");
+                pj.ie = Console.ReadLine();
+                Console.WriteLine("Informe o Valor da Compra");
+                valor_pag = float.Parse(Console.ReadLine());
+                pj.Pagar_Imposto(valor_pag);
+                Console.WriteLine("------- Pessoa Jurídica -------");
+                Console.WriteLine("Nome ...........: " + pj.nome);
+                Console.WriteLine("Endereço .......: " + pj.endereco);
+                Console.WriteLine("CNPJ ...........: " + pj.cnpj);
+                Console.WriteLine("IE .............: " + pj.ie);
+                Console.WriteLine("Valor da Compra : " + valor_pag.ToString("c"));
+                Console.WriteLine("Valor Total ....: " + pj.total.ToString("c"));
+            }
+            if (var_tipo != "j")
+            {
+                Console.WriteLine("Entrada invalido, reinicie o programa");
+            }
+                
+        }
+    }
+}
